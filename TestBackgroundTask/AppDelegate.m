@@ -20,8 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //[[LocationManager sharedManager] startLocation];
-    [AudioPlayerManager sharedManager];
+    [[LocationManager sharedManager] checkLocationAuthorization];
+    [[LocationManager sharedManager] startLocation];//测试定位后台保活
+    //[AudioPlayerManager sharedManager]; //测试音频后台保活 ok
     
     return YES;
 }
