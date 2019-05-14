@@ -56,18 +56,21 @@ static NSInteger circulDuration = 60;
     [[AudioPlayerManager sharedManager] play];
     [self applyforBackgroundTask];
     
+    //for test
     NSLog(@"currentThread:%@",[NSThread currentThread]);
+    NSLog(@"count:%ld",[[NSUserDefaults standardUserDefaults] integerForKey:countTime]);
+    _count = 0;
+    [[NSUserDefaults standardUserDefaults] setInteger:_count forKey:countTime];
+    
     //确保两个定时器同时进行
     dispatch_async(_queue, ^{
         self.timerLog = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(log) userInfo:nil repeats:YES];
         self.timerAD = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:circulDuration target:self selector:@selector(startAudioPlay) userInfo:nil repeats:YES];
         //for test runloop
         NSLog(@"currentThread:%@",[NSThread currentThread]);
-        NSLog(@"currentRunLoop:%@",[NSRunLoop currentRunLoop]);
         [[NSRunLoop currentRunLoop] addTimer:self.timerAD forMode:NSDefaultRunLoopMode];
         [[NSRunLoop currentRunLoop] addTimer:self.timerLog forMode:NSDefaultRunLoopMode];
         [[NSRunLoop currentRunLoop] run];
-        NSLog(@"currentRunLoop:%@",[NSRunLoop currentRunLoop]);
 
     });
 }
@@ -75,28 +78,32 @@ static NSInteger circulDuration = 60;
  申请后台
  */
 - (void)applyforBackgroundTask {
+    if (_taskId) {
+        [self endBackgoundTask:_taskId];
+    }
     __weak typeof(self) weakSelf = self;
     _taskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[UIApplication sharedApplication] endBackgroundTask:weakSelf.taskId];
-            weakSelf.taskId = UIBackgroundTaskInvalid;
+            [weakSelf endBackgoundTask:weakSelf.taskId];
         });
     }];
 }
-
+- (void)endBackgoundTask:(UIBackgroundTaskIdentifier)taskID {
+    [[UIApplication sharedApplication] endBackgroundTask:taskID];
+}
 #pragma mark actions
 /**
  打印
  */
+static NSString *const countTime = @"countTime";
 - (void)log {
-    _count = _count + 1;
-    NSLog(@"_count = %ld",_count);
+    _count++;
+    [[NSUserDefaults standardUserDefaults] setInteger:_count forKey:countTime];
 }
 /**
  检测后台运行时间
  */
 - (void)startAudioPlay {
-    _count = 0;
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([UIApplication sharedApplication].backgroundTimeRemaining < 6) {
             NSLog(@"后台快被杀死了");
@@ -106,7 +113,7 @@ static NSInteger circulDuration = 60;
             NSLog(@"后台继续活跃呢");
         }
         ///再次执行播放器停止，后台一直不会播放音乐文件
-        [[AudioPlayerManager sharedManager] stop];
+        //[[AudioPlayerManager sharedManager] stop];
     });
 }
 
