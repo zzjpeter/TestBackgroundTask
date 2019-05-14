@@ -16,7 +16,6 @@
 static NSInteger circulDuration = 60;
 @interface KeepBGRunManager ()
 {
-    CFRunLoopRef _runloopRef;
     dispatch_queue_t _queue;
 }
 @property (nonatomic,assign) UIBackgroundTaskIdentifier taskId;
@@ -57,14 +56,19 @@ static NSInteger circulDuration = 60;
     [[AudioPlayerManager sharedManager] play];
     [self applyforBackgroundTask];
     
+    NSLog(@"currentThread:%@",[NSThread currentThread]);
     //确保两个定时器同时进行
     dispatch_async(_queue, ^{
         self.timerLog = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(log) userInfo:nil repeats:YES];
         self.timerAD = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:circulDuration target:self selector:@selector(startAudioPlay) userInfo:nil repeats:YES];
-        //_runloopRef = CFRunLoopGetCurrent();
+        //for test runloop
+        NSLog(@"currentThread:%@",[NSThread currentThread]);
+        NSLog(@"currentRunLoop:%@",[NSRunLoop currentRunLoop]);
         [[NSRunLoop currentRunLoop] addTimer:self.timerAD forMode:NSDefaultRunLoopMode];
         [[NSRunLoop currentRunLoop] addTimer:self.timerLog forMode:NSDefaultRunLoopMode];
-        //CFRunLoopRun();
+        [[NSRunLoop currentRunLoop] run];
+        NSLog(@"currentRunLoop:%@",[NSRunLoop currentRunLoop]);
+
     });
 }
 /**
@@ -111,7 +115,6 @@ static NSInteger circulDuration = 60;
  */
 - (void)stopBGRun {
     if (_timerAD) {
-        //CFRunLoopStop(_runloopRef);
         [self releaseTimer:_timerLog];
         [self releaseTimer:_timerAD];
         [[AudioPlayerManager sharedManager] stop];
