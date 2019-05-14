@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AudioPlayerManager.h"
 
 @interface ViewController ()
 
@@ -27,6 +28,14 @@ static NSString *const countTime = @"countTime";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //[self testTask];
+    
+    [self testAudio];
+}
+
+- (void)testAudio {
+    [self.view addSubview:self.playBtn];
+    [self.view addSubview:self.pauseBtn];
+    [self.view addSubview:self.stopBtn];
 }
 
 - (void)testTask {
@@ -65,7 +74,7 @@ static NSString *const countTime = @"countTime";
 #pragma mark setter and getter
 - (UIButton *)playBtn {
     if (!_playBtn) {
-        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         _playBtn = aButton;
         aButton.frame = CGRectMake(50, 100, 100, 100);
         [aButton setTitle:@"播放音乐" forState:UIControlStateNormal];
@@ -76,24 +85,34 @@ static NSString *const countTime = @"countTime";
 
 - (UIButton *)pauseBtn {
     if (!_pauseBtn) {
-        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         _pauseBtn = aButton;
         aButton.frame = CGRectMake(50, 250, 100, 100);
-        [aButton setTitle:@"播放音乐" forState:UIControlStateNormal];
+        [aButton setTitle:@"暂停音乐" forState:UIControlStateNormal];
         [aButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
     }
     return _pauseBtn;
 }
 - (UIButton *)stopBtn {
     if (!_stopBtn) {
-        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         _stopBtn = aButton;
         aButton.frame = CGRectMake(50, 400, 100, 100);
-        [aButton setTitle:@"播放音乐" forState:UIControlStateNormal];
+        [aButton setTitle:@"结束音乐" forState:UIControlStateNormal];
         [aButton addTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
     }
     return _stopBtn;
 }
 
+#pragma mark actions
+-(void)play{
+    [[AudioPlayerManager sharedManager] play];
+}
+-(void)pause{
+    [[AudioPlayerManager sharedManager] pause];
+}
+-(void)stop{
+    [[AudioPlayerManager sharedManager] stop];
+}
 
 @end

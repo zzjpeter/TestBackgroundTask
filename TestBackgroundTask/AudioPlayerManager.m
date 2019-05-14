@@ -44,10 +44,12 @@
         
         // 1. 获取资源URL
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"遥远的她.mp3" ofType:nil];
-        NSLog(@"filePath:%@",filePath);
+        NSLog(@"filePath:%@",filePath);//转url有中文编码问题
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"遥远的她.mp3" withExtension:nil];
+        NSLog(@"url:%@",url);
         // 2. 根据资源URL, 创建 AVAudioPlayer 对象
         NSError *error = nil;
-        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:filePath] error:&error];
+        AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
         if (error) {
             NSLog(@"error:%@",error);
         }
