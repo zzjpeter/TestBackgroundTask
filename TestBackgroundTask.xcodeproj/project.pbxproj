@@ -73,10 +73,7 @@
 				47E64425228A574900BB3E73 /* AppDelegate.m */,
 				47E64427228A574900BB3E73 /* ViewController.h */,
 				47E64428228A574900BB3E73 /* ViewController.m */,
-				47E6443A228A74F800BB3E73 /* AudioPlayerManager.h */,
-				47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */,
-				47E64443228A83AC00BB3E73 /* KeepBGRunManager.h */,
-				47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */,
+				47E64446228AAA4C00BB3E73 /* BGAudio */,
 				47E6442A228A574900BB3E73 /* Main.storyboard */,
 				47E6442D228A574A00BB3E73 /* Assets.xcassets */,
 				47E6442F228A574A00BB3E73 /* LaunchScreen.storyboard */,
@@ -93,6 +90,17 @@
 				47E6443E228A837300BB3E73 /* 最佳损友.mp3 */,
 			);
 			path = mp3;
+			sourceTree = "<group>";
+		};
+		47E64446228AAA4C00BB3E73 /* BGAudio */ = {
+			isa = PBXGroup;
+			children = (
+				47E6443A228A74F800BB3E73 /* AudioPlayerManager.h */,
+				47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */,
+				47E64443228A83AC00BB3E73 /* KeepBGRunManager.h */,
+				47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */,
+			);
+			path = BGAudio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
