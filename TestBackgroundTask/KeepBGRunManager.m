@@ -49,6 +49,7 @@ static NSInteger circulDuration = 60;
     return self;
 }
 
+#pragma mark  后台保活一般方式(1.播放音乐 2.定位)，（播放音乐方式：缺点1.会被中断（电话、播放其他等））
 /**
  启动后台运行
  */
