@@ -61,11 +61,16 @@
 -(void)applicationEnterBackground
 {
     NSLog(@"come in background");
+    NSLog(@"%@##%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
+    NSLog(@"current thread:%@",[NSThread currentThread]);
     [self startLocation];
     [[BGTaskManager sharedManager] beginNewBackgroundTask];
     [[BGTaskManager sharedManager] startPrint];
 }
 - (void)applicationDidBecomeActive {
+    NSLog(@"come in foreground");
+    NSLog(@"%@##%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
+    NSLog(@"current thread:%@",[NSThread currentThread]);
     [self stopLocation];
     [[BGTaskManager sharedManager] endBackGroundTask];
     [[BGTaskManager sharedManager] stopPrint];

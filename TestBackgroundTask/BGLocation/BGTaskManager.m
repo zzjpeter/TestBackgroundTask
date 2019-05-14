@@ -106,6 +106,7 @@ static NSString *const countTime = @"countTime";
 }
 - (void)log {
     _count++;
+    NSLog(@"log count:%ld",_count);
     [[NSUserDefaults standardUserDefaults] setInteger:_count forKey:countTime];
 }
 - (void)releaseTimer:(NSTimer *)timer {

@@ -43,14 +43,31 @@
 -(void)applicationEnterBackground
 {
     NSLog(@"come in background");
+    NSLog(@"%@##%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
+    NSLog(@"current thread:%@",[NSThread currentThread]);
     [self.audioPlayer play];
     [[BGTaskManager sharedManager] beginNewBackgroundTask];
     [[BGTaskManager sharedManager] startPrint];
+    [self performSelector:@selector(restartTask) withObject:nil afterDelay:160];
+    [self performSelector:@selector(stopPlay) withObject:nil afterDelay:10];
 }
 - (void)applicationDidBecomeActive {
+    NSLog(@"come in foreground");
+    NSLog(@"%@##%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
+    NSLog(@"current thread:%@",[NSThread currentThread]);
     [self.audioPlayer stop];
     [[BGTaskManager sharedManager] endBackGroundTask];
     [[BGTaskManager sharedManager] stopPrint];
+}
+
+- (void)restartTask {
+    [self.audioPlayer play];
+    [[BGTaskManager sharedManager] beginNewBackgroundTask];
+    [self performSelector:@selector(restartTask) withObject:nil afterDelay:160];
+    [self performSelector:@selector(stopPlay) withObject:nil afterDelay:10];
+}
+- (void)stopPlay{
+    [self.audioPlayer stop];
 }
 
 #pragma mark 音乐播放
