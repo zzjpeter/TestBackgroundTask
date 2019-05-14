@@ -11,9 +11,6 @@
 
 @interface ViewController ()
 
-@property (nonatomic,strong)NSTimer *timer;
-@property (nonatomic,assign)NSInteger count;
-
 //Audio UI
 @property (nonatomic,strong)UIButton *playBtn;
 @property (nonatomic,strong)UIButton *pauseBtn;
@@ -21,50 +18,20 @@
 
 @end
 
-static NSString *const countTime = @"countTime";
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //[self testTask];
     
-    [self testAudio];
+    //[self testAudio];
 }
 
 - (void)testAudio {
     [self.view addSubview:self.playBtn];
     [self.view addSubview:self.pauseBtn];
     [self.view addSubview:self.stopBtn];
-}
-
-- (void)testTask {
-    NSLog(@"countTime:%ld",[[NSUserDefaults standardUserDefaults] integerForKey:countTime]);
-    self.count = 0;
-    [[NSUserDefaults standardUserDefaults] setInteger:self.count forKey:countTime];
-    [self timer];
-}
-
-#pragma mark timer
-- (NSTimer *)timer {
-    if (!_timer) {
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
-        _timer = timer;
-    }
-    return _timer;
-}
-
-- (void)releaseTimer {
-    if (_timer.isValid) {
-        [_timer invalidate];
-        _timer = nil;
-    }
-}
-
-- (void)timerAction {
-    self.count++;
-    [[NSUserDefaults standardUserDefaults] setInteger:self.count forKey:countTime];
-    NSLog(@"%@##%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
 }
 
 - (void)buildView {
