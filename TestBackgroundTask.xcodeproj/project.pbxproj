@@ -13,6 +13,10 @@
 		47E6442E228A574A00BB3E73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47E6442D228A574A00BB3E73 /* Assets.xcassets */; };
 		47E64431228A574A00BB3E73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47E6442F228A574A00BB3E73 /* LaunchScreen.storyboard */; };
 		47E64434228A574A00BB3E73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E64433228A574A00BB3E73 /* main.m */; };
+		47E6443C228A74F800BB3E73 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */; };
+		47E64440228A837400BB3E73 /* 最佳损友.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47E6443E228A837300BB3E73 /* 最佳损友.mp3 */; };
+		47E64441228A837400BB3E73 /* 遥远的她.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47E6443F228A837400BB3E73 /* 遥远的她.mp3 */; };
+		47E64445228A83AC00BB3E73 /* KeepBGRunManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,12 @@
 		47E64430228A574A00BB3E73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47E64432228A574A00BB3E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47E64433228A574A00BB3E73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		47E6443A228A74F800BB3E73 /* AudioPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayerManager.h; sourceTree = "<group>"; };
+		47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerManager.m; sourceTree = "<group>"; };
+		47E6443E228A837300BB3E73 /* 最佳损友.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "最佳损友.mp3"; sourceTree = "<group>"; };
+		47E6443F228A837400BB3E73 /* 遥远的她.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "遥远的她.mp3"; sourceTree = "<group>"; };
+		47E64443228A83AC00BB3E73 /* KeepBGRunManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeepBGRunManager.h; sourceTree = "<group>"; };
+		47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeepBGRunManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +68,15 @@
 		47E64423228A574800BB3E73 /* TestBackgroundTask */ = {
 			isa = PBXGroup;
 			children = (
+				47E6443D228A836600BB3E73 /* mp3 */,
 				47E64424228A574900BB3E73 /* AppDelegate.h */,
 				47E64425228A574900BB3E73 /* AppDelegate.m */,
 				47E64427228A574900BB3E73 /* ViewController.h */,
 				47E64428228A574900BB3E73 /* ViewController.m */,
+				47E6443A228A74F800BB3E73 /* AudioPlayerManager.h */,
+				47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */,
+				47E64443228A83AC00BB3E73 /* KeepBGRunManager.h */,
+				47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */,
 				47E6442A228A574900BB3E73 /* Main.storyboard */,
 				47E6442D228A574A00BB3E73 /* Assets.xcassets */,
 				47E6442F228A574A00BB3E73 /* LaunchScreen.storyboard */,
@@ -69,6 +84,15 @@
 				47E64433228A574A00BB3E73 /* main.m */,
 			);
 			path = TestBackgroundTask;
+			sourceTree = "<group>";
+		};
+		47E6443D228A836600BB3E73 /* mp3 */ = {
+			isa = PBXGroup;
+			children = (
+				47E6443F228A837400BB3E73 /* 遥远的她.mp3 */,
+				47E6443E228A837300BB3E73 /* 最佳损友.mp3 */,
+			);
+			path = mp3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,9 +157,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E64441228A837400BB3E73 /* 遥远的她.mp3 in Resources */,
 				47E64431228A574A00BB3E73 /* LaunchScreen.storyboard in Resources */,
 				47E6442E228A574A00BB3E73 /* Assets.xcassets in Resources */,
 				47E6442C228A574900BB3E73 /* Main.storyboard in Resources */,
+				47E64440228A837400BB3E73 /* 最佳损友.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +173,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				47E64429228A574900BB3E73 /* ViewController.m in Sources */,
+				47E6443C228A74F800BB3E73 /* AudioPlayerManager.m in Sources */,
+				47E64445228A83AC00BB3E73 /* KeepBGRunManager.m in Sources */,
 				47E64434228A574A00BB3E73 /* main.m in Sources */,
 				47E64426228A574900BB3E73 /* AppDelegate.m in Sources */,
 			);
