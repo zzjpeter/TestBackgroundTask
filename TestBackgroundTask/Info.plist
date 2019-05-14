@@ -20,7 +20,13 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>打开定位</string>
 	<key>NSLocationAlwaysUsageDescription</key>
+	<string>打开定位</string>
+	<key>NSLocationUsageDescription</key>
+	<string>打开定位</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>打开定位</string>
 	<key>UIBackgroundModes</key>
 	<array>
