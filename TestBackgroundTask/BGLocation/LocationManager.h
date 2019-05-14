@@ -1,5 +1,5 @@
 //
-//  KeepBGRunManager.h
+//  LocationManager.h
 //  TestBackgroundTask
 //
 //  Created by 朱志佳 on 2019/5/14.
@@ -7,21 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KeepBGRunManager : NSObject
+@interface LocationManager : NSObject
 
 + (instancetype)sharedManager;
-/**
- 开启后台运行
- */
-- (void)startBGRun;
 
-/**
- 关闭后台运行
- */
-- (void)stopBGRun;
+- (void)startLocation;
+
+//判断定位权限
+- (void)checkLocationAuthorization;
 
 @end
 

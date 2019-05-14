@@ -8,7 +8,7 @@
 
 #import "AudioPlayerManager.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "BGTaskManager.h"
 @interface AudioPlayerManager ()<AVAudioPlayerDelegate>
 
 @property (nonatomic,strong) AVAudioPlayer *audioPlayer;
@@ -31,8 +31,26 @@
     self = [super init];
     if (self) {
         [self audioPlayer];
+        //监听进入后台通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
     }
     return self;
+}
+
+#pragma mark noti
+//后台监听方法
+-(void)applicationEnterBackground
+{
+    NSLog(@"come in background");
+    [self.audioPlayer play];
+    [[BGTaskManager sharedManager] beginNewBackgroundTask];
+    [[BGTaskManager sharedManager] startPrint];
+}
+- (void)applicationDidBecomeActive {
+    [self.audioPlayer stop];
+    [[BGTaskManager sharedManager] endBackGroundTask];
+    [[BGTaskManager sharedManager] stopPrint];
 }
 
 #pragma mark 音乐播放
@@ -40,7 +58,7 @@
     if (!_audioPlayer) {
         
         // 0. 设置后台音频会话
-        //[self setBackGroundPlay];
+        [self setBackGroundPlay];
         
         // 1. 获取资源URL
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"遥远的她.mp3" ofType:nil];

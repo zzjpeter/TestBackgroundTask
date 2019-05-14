@@ -16,7 +16,8 @@
 		47E6443C228A74F800BB3E73 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */; };
 		47E64440228A837400BB3E73 /* 最佳损友.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47E6443E228A837300BB3E73 /* 最佳损友.mp3 */; };
 		47E64441228A837400BB3E73 /* 遥远的她.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47E6443F228A837400BB3E73 /* 遥远的她.mp3 */; };
-		47E64445228A83AC00BB3E73 /* KeepBGRunManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */; };
+		47E6444A228AAA9300BB3E73 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E64449228AAA9300BB3E73 /* LocationManager.m */; };
+		47E6444D228AAE1500BB3E73 /* BGTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E6444C228AAE1500BB3E73 /* BGTaskManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,10 @@
 		47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerManager.m; sourceTree = "<group>"; };
 		47E6443E228A837300BB3E73 /* 最佳损友.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "最佳损友.mp3"; sourceTree = "<group>"; };
 		47E6443F228A837400BB3E73 /* 遥远的她.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "遥远的她.mp3"; sourceTree = "<group>"; };
-		47E64443228A83AC00BB3E73 /* KeepBGRunManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeepBGRunManager.h; sourceTree = "<group>"; };
-		47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeepBGRunManager.m; sourceTree = "<group>"; };
+		47E64448228AAA9300BB3E73 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		47E64449228AAA9300BB3E73 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		47E6444B228AAE1500BB3E73 /* BGTaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTaskManager.h; sourceTree = "<group>"; };
+		47E6444C228AAE1500BB3E73 /* BGTaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BGTaskManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 				47E64425228A574900BB3E73 /* AppDelegate.m */,
 				47E64427228A574900BB3E73 /* ViewController.h */,
 				47E64428228A574900BB3E73 /* ViewController.m */,
+				47E64447228AAA6800BB3E73 /* BGLocation */,
 				47E64446228AAA4C00BB3E73 /* BGAudio */,
 				47E6442A228A574900BB3E73 /* Main.storyboard */,
 				47E6442D228A574A00BB3E73 /* Assets.xcassets */,
@@ -97,10 +101,19 @@
 			children = (
 				47E6443A228A74F800BB3E73 /* AudioPlayerManager.h */,
 				47E6443B228A74F800BB3E73 /* AudioPlayerManager.m */,
-				47E64443228A83AC00BB3E73 /* KeepBGRunManager.h */,
-				47E64444228A83AC00BB3E73 /* KeepBGRunManager.m */,
 			);
 			path = BGAudio;
+			sourceTree = "<group>";
+		};
+		47E64447228AAA6800BB3E73 /* BGLocation */ = {
+			isa = PBXGroup;
+			children = (
+				47E64448228AAA9300BB3E73 /* LocationManager.h */,
+				47E64449228AAA9300BB3E73 /* LocationManager.m */,
+				47E6444B228AAE1500BB3E73 /* BGTaskManager.h */,
+				47E6444C228AAE1500BB3E73 /* BGTaskManager.m */,
+			);
+			path = BGLocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E6444D228AAE1500BB3E73 /* BGTaskManager.m in Sources */,
+				47E6444A228AAA9300BB3E73 /* LocationManager.m in Sources */,
 				47E64429228A574900BB3E73 /* ViewController.m in Sources */,
 				47E6443C228A74F800BB3E73 /* AudioPlayerManager.m in Sources */,
-				47E64445228A83AC00BB3E73 /* KeepBGRunManager.m in Sources */,
 				47E64434228A574A00BB3E73 /* main.m in Sources */,
 				47E64426228A574900BB3E73 /* AppDelegate.m in Sources */,
 			);
