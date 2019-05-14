@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     
     [[LocationManager sharedManager] checkLocationAuthorization];
-    [[LocationManager sharedManager] startLocation];//测试定位后台保活
+    [[LocationManager sharedManager] startLocation];//测试定位后台保活 OK
     //[AudioPlayerManager sharedManager]; //测试音频后台保活 ok
     
     return YES;
